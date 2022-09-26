@@ -5,16 +5,16 @@ on:
   push:
     branches:
       - main
-      - develop
-      - "feature/*" # matches feature/featureA, feature/featureA, ...
-      - "feature/**" # matches feature/featureA, feature/feat/featureA, ...
-      - "!feature/featC" # Will ignore feature/featC
-    tags:
-      - v1.* # matches v1.0.0, v1.0.1, ...
-    paths:
-      - "**.js" # matches every js file
-      - "src/**" # mathces every file in the src folder
-      - "!filename.js" # Ignore the filename.js
+      # - develop
+      # - "feature/*" # matches feature/featureA, feature/featureA, ...
+      # - "feature/**" # matches feature/featureA, feature/feat/featureA, ...
+      # - "!feature/featC" # Will ignore feature/featC
+    # tags:
+    #   - v1.* # matches v1.0.0, v1.0.1, ...
+    # paths:
+    #   - "**.js" # matches every js file
+    #   - "src/**" # mathces every file in the src folder
+    #   - "!filename.js" # Ignore the filename.js
   pull_request:
     types:
       - "closed"
