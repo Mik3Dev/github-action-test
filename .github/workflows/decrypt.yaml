@@ -9,8 +9,9 @@ jobs:
       - uses: actions/checkout@v1
       - name: Decrypt File
         env:
-          PASSPHRASE: ${{ secrets.MY_SECRET }}
+          PASSPHRASE: ${{ secrets.PASSPHRASE }}
         run: |
-          gpg --quiet --batch --yes --decrypt --passphrase="$PASSPHRASE"--output=$HOME/my_secret.json my_secret.json.gpg
+          gpg --quiet --batch --yes --decrypt --passphrase="$PASSPHRASE" \
+          --output $HOME/my_secret.json my_secret.json.gpg
       - name: Print file content
         run: cat $HOME/my_secret.json
