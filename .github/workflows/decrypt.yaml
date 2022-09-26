@@ -11,6 +11,6 @@ jobs:
         env:
           MY_SECRET: ${{ secrets.MY_SECRET }}
         run: |
-          gpg --quit --bash --yes --decrypt --passphrase="$MY_SECRET"--output=$HOME/my_secret.json my_secret.json.gpg
+          gpg --quiet --bash --yes --decrypt --passphrase="$MY_SECRET"--output=$HOME/my_secret.json my_secret.json.gpg
       - name: Print file content
         run: cat $HOME/my_secret.json
