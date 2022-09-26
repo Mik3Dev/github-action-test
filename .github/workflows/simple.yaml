@@ -4,7 +4,7 @@ name: Shell Commands
 on:
   push:
     branches:
-      - master
+      - main
       - develop
       - "feature/*" # matches feature/featureA, feature/featureA, ...
       - "feature/**" # matches feature/featureA, feature/feat/featureA, ...
