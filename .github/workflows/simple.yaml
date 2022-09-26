@@ -3,11 +3,25 @@ name: Shell Commands
 # on: [push]
 on:
   push:
+    branches:
+      - master
+      - develop
+      - "feature/*" # matches feature/featureA, feature/featureA, ...
+      - "feature/**" # matches feature/featureA, feature/feat/featureA, ...
+      - "!feature/featC" # Will ignore feature/featC
+    tags:
+      - v1.* # matches v1.0.0, v1.0.1, ...
+    paths:
+      - "**.js" # matches every js file
+      - "src/**" # mathces every file in the src folder
+      - "!filename.js" # Ignore the filename.js
   pull_request:
     types:
       - "closed"
       - "assigned"
       - "opened"
+  # schedule:
+  #   - cron: "0 12 * * *" # A schedule job - At 12:00 hours every day
 
 jobs:
   run-shell-command:
