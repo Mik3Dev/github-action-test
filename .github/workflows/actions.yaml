@@ -12,6 +12,11 @@ jobs:
         run: |
           pwd
           ls
+      - name: Some Github Env Variables
+        run: |
+          echo $GITHUB_SHA
+          echo $GITHUB_REPOSITORY
+          echo $GITHUB_WORKSPACE
       - name: Simple JS Action
         id: greet
         uses: actions/hello-world-javascript-action@v1
