@@ -3,6 +3,9 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   functions:
@@ -30,3 +33,21 @@ jobs:
         run: echo '${{ toJSON(strategy) }}'
       - name: Dump matrix context
         run: echo '${{ toJSON(matrix) }}'
+  if-test:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    steps:
+      - name: Fail - TYPO
+        run: eccho 'Fail!!!'
+      - name: If failure
+        if: failure()
+        run: echo 'Run if previous step fail'
+      - name: Always run - no matter if fail/success
+        if: always
+        run: echo 'Always run'
+      - name: if previous success
+        run: echo 'It runs if previous step success'
+      - name: normal
+        run: echo 'Normal'
+      - name: normal-2
+        run: echo 'normal-2'
