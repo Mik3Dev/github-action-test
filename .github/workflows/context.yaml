@@ -43,7 +43,7 @@ jobs:
         if: failure()
         run: echo 'Run if previous step fail'
       - name: Always run - no matter if fail/success
-        if: always
+        if: always()
         run: echo 'Always run'
       - name: if previous success
         run: echo 'It runs if previous step success'
