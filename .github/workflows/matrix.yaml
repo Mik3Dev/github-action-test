@@ -6,10 +6,23 @@ jobs:
   node-version:
     strategy:
       matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
         node_version: [8, 10, 12]
+        include:
+          - os: ubuntu-latest
+            node-version: 18
+        exclude:
+          - os: macos-latest
+            node_version: 8
+          - os: macos-latest
+            node_version: 10
+          - os: windows-latest
+            node_version: 8
+          - os: windows-latest
+            node_version: 10
       max-parallel: 0
       fail-fast: true
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Log node version
         run: node -v
